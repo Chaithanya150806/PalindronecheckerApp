@@ -9,35 +9,40 @@ import java.util.Stack;
 import java.util.*;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 
 public class PalindronecheckerApp {
     public static void main(String[] args) {
-        String input = "refer";
 
-        // Create a Deque to store characters
-        Deque<Character> deque = new ArrayDeque<>();
+        String input = "Level";
 
-        // Add each character to the deque
+        // Convert to lowercase to make it case-insensitive
+        input = input.toLowerCase();
+
+        // Create a LinkedList to store characters
+        LinkedList<Character> list = new LinkedList<>();
+
+        // Add each character to the linked list
         for (char c : input.toCharArray()) {
-            deque.addLast(c);
+            list.add(c);
         }
 
-        // Flag to track palindrome result
+        // Flag to track palindrome state
         boolean isPalindrome = true;
 
-        // Continue comparison while more than one element exists
-        while (deque.size() > 1) {
-            char front = deque.removeFirst();
-            char rear = deque.removeLast();
+        // Compare until only one or zero elements remain
+        while (list.size() > 1) {
+            char first = list.removeFirst();
+            char last = list.removeLast();
 
-            if (front != rear) {
+            if (first != last) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        // Output result
-        System.out.println("Input : " + input);
+        // Output
+        System.out.println("Input : " + input.substring(0,1).toUpperCase() + input.substring(1));
         System.out.println("Is Palindrome? : " + isPalindrome);
             }
         }
