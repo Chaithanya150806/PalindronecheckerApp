@@ -4,22 +4,28 @@
  This is the first method executed by the JVM
  */
 
-
+import java.util.Scanner;
 public class PalindronecheckerApp {
     public static void main(String[] args) {
-        String input = "madam";   // predefined string
-        boolean isPalindrome = true;
+        Scanner sc = new Scanner(System.in);
 
-        // Loop only till half of the string length
-        for (int i = 0; i < input.length() / 2; i++) {
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
 
-            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        String reversed = "";
+
+        // Iterate from the last character to the first
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed = reversed + input.charAt(i);
         }
 
-        System.out.println("Input text: " + input);
-        System.out.println("Is it a Palindrome? : " + isPalindrome);
+        // Check if palindrome
+        if (input.equals(reversed)) {
+            System.out.println("It is a Palindrome.");
+        } else {
+            System.out.println("It is NOT a Palindrome.");
+        }
+
+        sc.close();
     }
 }
