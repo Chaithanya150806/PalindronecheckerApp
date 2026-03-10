@@ -9,42 +9,36 @@ import java.util.Stack;
 import java.util.*;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
+
 
 public class PalindronecheckerApp {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        String input = "Level";
+        System.out.print("Input: ");
+        String input = sc.nextLine();
 
-        // Convert to lowercase to make it case-insensitive
-        input = input.toLowerCase();
+        boolean result = check(input, 0, input.length() - 1);
 
-        // Create a LinkedList to store characters
-        LinkedList<Character> list = new LinkedList<>();
+        System.out.println("Is Palindrome?: " + result);
+    }
 
-        // Add each character to the linked list
-        for (char c : input.toCharArray()) {
-            list.add(c);
+    private static boolean check(String s, int start, int end) {
+
+        // Base condition
+        if (start >= end) {
+            return true;
         }
 
-        // Flag to track palindrome state
-        boolean isPalindrome = true;
-
-        // Compare until only one or zero elements remain
-        while (list.size() > 1) {
-            char first = list.removeFirst();
-            char last = list.removeLast();
-
-            if (first != last) {
-                isPalindrome = false;
-                break;
-            }
+        // If characters are not equal
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
         }
 
-        // Output
-        System.out.println("Input : " + input.substring(0,1).toUpperCase() + input.substring(1));
-        System.out.println("Is Palindrome? : " + isPalindrome);
-            }
+        // Recursive call
+        return check(s, start + 1, end - 1);
+
+    }
         }
 
 
